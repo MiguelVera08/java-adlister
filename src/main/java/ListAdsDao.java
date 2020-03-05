@@ -23,6 +23,17 @@ public class ListAdsDao implements Ads {
         return ad.getId();
     }
 
+    @Override
+    public boolean delete(long id) {
+        for(Ad ad : ads){
+            if(ad.getId() == id) {
+                ads.remove(ad);
+                return true;
+            }
+        }
+        return false;
+    }
+
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();
         ads.add(new Ad(
@@ -51,4 +62,6 @@ public class ListAdsDao implements Ads {
         ));
         return ads;
     }
+
+
 }
